@@ -2,8 +2,7 @@
   {
     "name": "onlyRefresh",
     "type": "checkbox",
-    "label": "勾选后仅刷新自定义配置，初次运行勾选该选项以生成自定义配置",
-    "default": true
+    "label": "勾选后仅刷新自定义配置，不运行"
   },
   {
     "name": "groupCount",
@@ -15,5 +14,227 @@
     "name": "enableMoreSettings",
     "type": "checkbox",
     "label": "勾选后下次运行展开高级设置\n用于进行路线筛选和排序"
+  },
+  {
+    "name": "operationMode",
+    "type": "select",
+    "label": "选择操作模式",
+    "options": [
+      "执行任务（若不存在索引文件则自动创建）",
+      "重新生成索引文件（用于强制刷新CD）"
+    ]
+  },
+  {
+    "name": "timeRule",
+    "type": "input-text",
+    "label": "本地时间-不运行时段\n示例写法：\n  单个小时：8\n  连续区间：8-11 或 23:11-23:55（可省略分钟）\n  多项分隔：用中文逗号【，】\n规则：\n  只写小时：开始=整点，结束=59分；跨天自动识别\n  含分钟：按实际时分计算\n  提前10分钟结束并等待到限制时段开始\n留空=全天可运行"
+  },
+  {
+    "name": "infoFileName",
+    "type": "input-text",
+    "label": "输入用于存储信息的文件名，只在不同账号分别管理CD时填写"
+  },
+  {
+    "name": "disableJsons",
+    "type": "input-text",
+    "label": "填写需要禁用的路线的关键词，使用中文分号分隔\n文件路径含有相关关键词的路线会被禁用"
+  },
+  {
+    "name": "disableXYCheck",
+    "type": "checkbox",
+    "label": "勾选后跳过路线完成后的坐标校验\n【警告】运行卡死等未成功到达终点的路线也将进入cd"
+  },
+  {
+    "name": "findFInterval",
+    "type": "input-text",
+    "label": "识别间隔(毫秒)\n两次检测f图标之间等待时间",
+    "default": "100"
+  },
+  {
+    "name": "ingredientProcessingFood",
+    "type": "input-text",
+    "label": "食材名称\n用中文逗号，分隔"
+  },
+  {
+    "name": "foodCount",
+    "type": "input-text",
+    "label": "食材数量\n数量对应上方的食材\n用中文逗号，分隔"
+  },
+  {
+    "name": "checkInterval",
+    "type": "input-text",
+    "label": "食材加工中的识别间隔(毫秒)，设备反应较慢出现识别错误时适当调大",
+    "default": "50"
+  },
+  {
+    "name": "setTimeMode",
+    "type": "select",
+    "label": "尝试调节时间来获得移速加成\n队伍中含迪希雅、嘉明或塔利雅时选择白天\n队伍中含罗莎莉亚时选择夜晚",
+    "options": [
+      "不调节时间",
+      "尽量调为白天",
+      "尽量调为夜晚"
+    ],
+    "default": "不调节时间"
+  },
+  {
+    "name": "priorityItems",
+    "type": "input-text",
+    "label": "优先采集材料，每天会尝试优先采集指定数量的目标物品，随后才执行路径组\n格式：材料名*数量，由加号+连接\n如萃凝晶*160+甜甜花*10"
+  },
+  {
+    "name": "priorityItemsPartyName",
+    "type": "input-text",
+    "label": "优先采集材料使用的配队名称"
+  },
+  {
+    "name": "priorityTags",
+    "type": "input-text",
+    "label": "优先关键词，文件名或拾取材料含关键词的路线会被视为最高效率\n不同关键词使用【中文逗号】分隔"
+  },
+  {
+    "name": "sortMode",
+    "type": "select",
+    "label": "选择同组路线排序模式",
+    "options": [
+      "文件顺序，按在文件夹中位置顺序运行",
+      "优先最早刷新，将优先执行最早刷新的路线",
+      "优先最高效率，将优先执行最高分均拾取物的路线"
+    ],
+    "default": "文件顺序，按在文件夹中位置顺序运行"
+  },
+  {
+    "name": "defaultEffPercentile",
+    "type": "input-text",
+    "label": "默认效率指数，范围0-1\n数值越大时，未知效率的路线被视作的默认效率越高",
+    "default": "0.5"
+  },
+  {
+    "name": "weightedRule",
+    "type": "input-text",
+    "label": "加权规则，允许将特定物品视为多倍计算效率\n黑名单物品将自动视为0\n格式如下：\n物品名称*权重\n使用【中文逗号】分隔\n如：甜甜花*2，树莓*0"
+  },
+  {
+    "name": "pathGroup1FolderName",
+    "type": "select",
+    "label": "#############################################\n选择路径组1文件夹（pathing下第一层）",
+    "options": [
+      "",
+      ".git",
+      "0-4食材",
+      "「冷鲜肉」",
+      "兽肉-丝柯克@灰林鸮",
+      "地区特产",
+      "甜甜花@白白喵",
+      "螃蟹"
+    ]
+  },
+  {
+    "name": "pathGroup1CdType",
+    "type": "select",
+    "label": "选择路径组1CD类型，不选不运行该路径组",
+    "options": [
+      "",
+      "1次0点刷新",
+      "2次0点刷新",
+      "3次0点刷新",
+      "4点刷新",
+      "12小时刷新",
+      "24小时刷新",
+      "46小时刷新"
+    ]
+  },
+  {
+    "name": "pathGroup1PartyName",
+    "type": "input-text",
+    "label": "输入路径组1使用配队名称"
+  },
+  {
+    "name": "pathGroup1thresholdEfficiency",
+    "type": "input-text",
+    "label": "路径组1临界效率\n分均拾取个数效率低于临界效率的路线会被排除",
+    "default": "0"
+  },
+  {
+    "name": "pathGroup2FolderName",
+    "type": "select",
+    "label": "#############################################\n选择路径组2文件夹（pathing下第一层）",
+    "options": [
+      "",
+      ".git",
+      "0-4食材",
+      "「冷鲜肉」",
+      "兽肉-丝柯克@灰林鸮",
+      "地区特产",
+      "甜甜花@白白喵",
+      "螃蟹"
+    ]
+  },
+  {
+    "name": "pathGroup2CdType",
+    "type": "select",
+    "label": "选择路径组2CD类型，不选不运行该路径组",
+    "options": [
+      "",
+      "1次0点刷新",
+      "2次0点刷新",
+      "3次0点刷新",
+      "4点刷新",
+      "12小时刷新",
+      "24小时刷新",
+      "46小时刷新"
+    ]
+  },
+  {
+    "name": "pathGroup2PartyName",
+    "type": "input-text",
+    "label": "输入路径组2使用配队名称"
+  },
+  {
+    "name": "pathGroup2thresholdEfficiency",
+    "type": "input-text",
+    "label": "路径组2临界效率\n分均拾取个数效率低于临界效率的路线会被排除",
+    "default": "0"
+  },
+  {
+    "name": "pathGroup3FolderName",
+    "type": "select",
+    "label": "#############################################\n选择路径组3文件夹（pathing下第一层）",
+    "options": [
+      "",
+      ".git",
+      "0-4食材",
+      "「冷鲜肉」",
+      "兽肉-丝柯克@灰林鸮",
+      "地区特产",
+      "甜甜花@白白喵",
+      "螃蟹"
+    ]
+  },
+  {
+    "name": "pathGroup3CdType",
+    "type": "select",
+    "label": "选择路径组3CD类型，不选不运行该路径组",
+    "options": [
+      "",
+      "1次0点刷新",
+      "2次0点刷新",
+      "3次0点刷新",
+      "4点刷新",
+      "12小时刷新",
+      "24小时刷新",
+      "46小时刷新"
+    ]
+  },
+  {
+    "name": "pathGroup3PartyName",
+    "type": "input-text",
+    "label": "输入路径组3使用配队名称"
+  },
+  {
+    "name": "pathGroup3thresholdEfficiency",
+    "type": "input-text",
+    "label": "路径组3临界效率\n分均拾取个数效率低于临界效率的路线会被排除",
+    "default": "0"
   }
 ]

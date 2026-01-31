@@ -41,6 +41,6 @@
         "name": "versionABGI",
         "type": "input-text",
         "label": "                         本地ABGI版本(别改)          \n              本地ABGI自动修改版本号，不用改",
-        "default": "3.4.12"
+        "default": "3.5.60"
   }
 ]

@@ -163,7 +163,7 @@
       "y": 2131.40478515625
     },
     {
-      "action": "set_time",
+      "action": "",
       "action_params": "06:00",
       "id": 17,
       "move_mode": "climb",

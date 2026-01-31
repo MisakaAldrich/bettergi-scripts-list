@@ -64,7 +64,7 @@
       "y": -1588.294921875
     },
     {
-      "action": "set_time",
+      "action": "",
       "action_params": "06:00",
       "id": 6,
       "move_mode": "dash",

@@ -1,0 +1,11 @@
+{
+  "weekly": {
+    "expGained": 300,
+    "attempts": 15
+  },
+  "daily": {
+    "attempts": 1
+  },
+  "nextWeek": 1768766400000,
+  "nextDay": 1768420800000
+}

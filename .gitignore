@@ -31,3 +31,5 @@ coverage
 *.sw?
 .vs/
 *.tsbuildinfo
+/repo/js/AutoHoeingOneDragon/pathingOut/*
+/repo/js/ArtifactsGroupPurchasing/targets/*

@@ -36,7 +36,7 @@
       "y": -1776.4501953125
     },
     {
-      "action": "set_time",
+      "action": "",
       "action_params": "12:00",
       "id": 3,
       "move_mode": "walk",
